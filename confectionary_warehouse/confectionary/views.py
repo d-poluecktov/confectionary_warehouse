@@ -1,8 +1,13 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from rest_framework import generics
+from .models import Confectionary
+from .serializers import ConfectionarySerializer
 
 
-# Create your views here.
+class ConfectionaryListCreateView(generics.ListCreateAPIView):
+    queryset = Confectionary.objects.all()
+    serializer_class = ConfectionarySerializer
 
-def index(request):
-    return HttpResponse("Hello, world. You're at the polls index.")
+
+class ConfectionaryDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Confectionary.objects.all()
+    serializer_class = ConfectionarySerializer

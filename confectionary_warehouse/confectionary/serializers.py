@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from models import Confectionary
+from .models import Confectionary
 
 
 class ConfectionarySerializer(serializers.ModelSerializer):

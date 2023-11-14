@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from models import Country, City, Manufacturer
+from .models import Country, City, Manufacturer
 
 
 class CountrySerializer(serializers.ModelSerializer):
@@ -10,16 +10,14 @@ class CountrySerializer(serializers.ModelSerializer):
 
 
 class CitySerializer(serializers.ModelSerializer):
-    country = CountrySerializer()
-
+    country_id = serializers.IntegerField()
     class Meta:
         model = City
-        fields = ('id', 'name', 'country')
+        fields = ('id', 'name', 'country_id')
 
 
 class ManufacturerSerializer(serializers.ModelSerializer):
-    city = CitySerializer()
-
+    city_id = serializers.IntegerField()
     class Meta:
         model = Manufacturer
-        fields = ('id', 'name', 'city')
+        fields = ('id', 'name', 'city_id')
